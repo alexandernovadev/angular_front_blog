@@ -1,0 +1,37 @@
+<div class="col-md-12 m-3">
+
+    <h1>{{ page_title }}</h1>
+    <p *ngIf="status == ''">
+      Crea una Nueva  <b>CATEGORIA</b>!!!
+    </p>
+    <hr/>
+     
+    <div class="alert alert-success col-md-6" *ngIf="status == 'success'">
+      Categoria Creada correctamente. &nbsp; 
+    </div>
+  
+    <div class="alert alert-danger col-md-6" *ngIf="status != '' && status != 'success'">
+      Error al crear la categoria. <br> <small> {{ status }}</small>  &nbsp; 
+    </div>
+  
+  
+    <!-- Formulario de Crear Categoria -->
+
+   <form #categoryForm="ngForm" (ngSubmit)="enviarnewCategoria(categoryForm)"
+    class="col-md-5">
+
+    <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" name="name" #name="ngModel"
+        [(ngModel)]="category.name" required pattern="[a-zA-Z ]+"/>
+  
+        <small *ngIf="name.invalid && name.touched" class="invalid-feedback d-block">
+          El nombre de la Catedpria no es valido
+        </small>
+      </div>
+
+      <input type="submit" value="Add Categoria" class="btn btn-success"
+      [disabled]="categoryForm.invalid">
+
+   </form>
+  </div>

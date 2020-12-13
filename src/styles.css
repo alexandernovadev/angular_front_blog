@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.avatar_mask
+{
+    height: 40px;
+    width: 40px;
+    border-radius: 900px;
+    overflow: hidden;
+}
+
+.avatar_mask img
+{
+    height: 40px;
+}
+
+.card-header a
+{
+    color: #444;
+}
+
+.post-image
+{
+    height: 200px;
+    overflow: hidden;
+}

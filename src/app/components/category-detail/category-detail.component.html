@@ -1,0 +1,79 @@
+
+<div class="container-fluid my-3" *ngIf="category; else loading">
+  <!-- Cuando la variable post tenga contenido miestre este div -->
+    
+    <h1>{{ category.name }}</h1>
+    <hr>
+  
+    <div *ngIf="posts && posts.length == 0" class="alert alert-info">
+      NO hay entradas para este post
+    </div>
+
+    <div class="card-columns" *ngIf="posts; else loading">
+        <article class="card w-100" *ngFor="let post of posts">
+          <div class="card-header">
+    
+            <h3>
+            <a class="" 
+             [routerLink]="[ '/entrada',post.id]" > {{ post.title }}</a> 
+            </h3>
+          </div>
+    
+          <div class="card-body">
+            <div class="post-image" *ngIf="post.image; else imagenone">
+              <img [src]="url +'post/image/' + post.image" [alt]="post.title" class="w-100"/>
+            </div>
+    
+            <ng-template class="post-image" #imagenone>
+                <img src="assets/images/noimage.png" alt="imagen default" class="w-100">
+            </ng-template>
+    
+    
+            <!-- Botones -->
+            <div class="post-buttons m-3">
+              <a [routerLink]="[ '/entrada',post.id]" class="mr-2 btn btn-success">Leer</a>
+              <span *ngIf="identity && identity.sub == post.user_id">
+                <a [routerLink]="[ '/editar-entrada',post.id]" class="mr-2 btn btn-primary">Editar</a>
+                <a  class="btn btn-danger" style="color: #fff"
+                data-toggle="modal" [attr.data-target]="'#modalborrapost'+post.id">Borrar</a>
+              </span>
+            </div>
+          </div>
+    
+          <div class="modal" tabindex="-1" role="dialog" id="{{ 'modalborrapost'+ post.id}}">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Borrar Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>¿ Está seguro que quiere eliminar el post ?<br/></p>
+                      <h5><b>"{{  post.title }}"</b></h5>
+                       
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                     (click)="deletepost(post.id)">
+                      Borrar Post
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </article>
+    
+        
+      </div>
+</div>
+
+<ng-template #loading>
+  Cargando..
+</ng-template>
+  
+  
+  
+  

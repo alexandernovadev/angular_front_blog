@@ -1,0 +1,22 @@
+<div class="col-md-12" *ngIf="post; else loading">
+  <h1>{{ post.title }}</h1>
+  <hr>
+  
+  <p>
+    {{ post.category.name }} - <a [routerLink]="[ '/perfil', post.user.id ]">
+      {{ post.user.name + " " + post.user.surname }}
+    </a>
+  </p>
+  <hr>
+<!-- 
+  Pintar HTML sin etiquetas
+  Hay que utilizar una propiedad de Angular llamada [innerHTML]="aqui la variable" -->
+
+  <p [innerHTML]="post.content"></p>
+</div>
+
+<ng-template #loading>
+    <div class="col-md-12">
+      Cargando...
+    </div>
+</ng-template>
