@@ -17,6 +17,7 @@ export class UserEditComponent implements OnInit
   token;
   status = '';
   urlapi = urlglobal.url;
+  resetVar = '';
 
   loading = true;
 

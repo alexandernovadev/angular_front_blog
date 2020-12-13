@@ -20,6 +20,7 @@ export class PostNewComponent implements OnInit {
   public token;
   public categories;
   urlapi = urlglobal.url;
+  resetVar=''
   
   opcionesfroala: Object = {
     language: 'es',
@@ -72,6 +73,7 @@ export class PostNewComponent implements OnInit {
       1,
       this.identity.sub,
       1,
+      '',
       '',
       '',
       ''

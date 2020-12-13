@@ -7,6 +7,7 @@ export class Post
         public category_id: number,
         public content: string,
         public image: string,
+        public title: string,
         public createdAt: any,
     ){}
 }
