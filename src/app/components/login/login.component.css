@@ -1,0 +1,11 @@
+.cards-post{
+    color: black;
+    font-family: 'Indie Flower', cursive;
+}
+.brang-cursive {
+    font-family: 'Dancing Script', cursive !important;
+    color: gray;
+    font-size: 3rem;
+}
+.w3-spin{animation:w3-spin 6s infinite linear}
+@keyframes w3-spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}

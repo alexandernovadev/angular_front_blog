@@ -1,8 +1,8 @@
-<div class="col-md-12 m-3">
+<div class="col-md-12 m-3 cards-post">
 
   <h1>{{ page_title }}</h1>
   <p *ngIf="status == ''">
-    Seccion para editar datos de <b>USUARIO</b>!!!
+
   </p>
   <hr/>
   <div class="alert alert-success col-md-6" *ngIf="status == 'success'">
@@ -16,36 +16,46 @@
 
   <!-- Formulario de Ajustes -->
 
-  <form  class="card p-3 col-md-6 " #usereditForm="ngForm" 
+  <form  class="card p-3 col-md-12 " #usereditForm="ngForm" 
     (ngSubmit)="enviarUpdateUser(usereditForm)">
-    <div class="form-group">
-      <label for="name">Nombre</label>
-      <input type="text" class="form-control" name="name" #name="ngModel"
-      [(ngModel)]="user.name" required pattern="[a-zA-Z]+"/>
 
-      <small *ngIf="name.invalid && name.touched" class="invalid-feedback d-block">
-        El name no es valido
-      </small>
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" class="form-control" name="name" #name="ngModel"
+          [(ngModel)]="user.name" required pattern="[a-zA-Z]+"/>
+    
+          <small *ngIf="name.invalid && name.touched" class="invalid-feedback d-block">
+            El name no es valido
+          </small>
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label for="surname">Apellido</label>
+          <input type="text" class="form-control" name="surname" #surname="ngModel"
+          [(ngModel)]="user.surname" required pattern="[a-zA-Z]+"/>
+    
+          <small *ngIf="surname.invalid && surname.touched" class="invalid-feedback d-block">
+              Los Apellidos no son validos
+          </small>
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email"class="form-control"  name="email"  #email="ngModel"
+          [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+    
+          <small *ngIf="email.invalid && email.touched" class="invalid-feedback d-block">
+              El email no es valido
+          </small>
+        </div>
+      </div>
+
     </div>
-    <div class="form-group">
-      <label for="surname">Apellido</label>
-      <input type="text" class="form-control" name="surname" #surname="ngModel"
-      [(ngModel)]="user.surname" required pattern="[a-zA-Z]+"/>
-
-      <small *ngIf="surname.invalid && surname.touched" class="invalid-feedback d-block">
-          Los Apellidos no son validos
-      </small>
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email"class="form-control"  name="email"  #email="ngModel"
-      [(ngModel)]="user.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-
-      <small *ngIf="email.invalid && email.touched" class="invalid-feedback d-block">
-          El email no es valido
-      </small>
-    </div>
-
+  
     <div class="form-group">
       <label for="description">Descripcion</label>
       <textarea [(froalaModel)]="user.description"

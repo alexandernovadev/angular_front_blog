@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+.brang-cursive {
+    font-family: 'Dancing Script', cursive !important;
+    color: gray;
+    font-size: 1.rem;
+}
+.navbar a {
+    font-family: 'Indie Flower', cursive;
+    color: #455a64;
+    font-size: 1.rem;
+}

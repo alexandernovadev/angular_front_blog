@@ -1,20 +1,17 @@
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-3">
-    <a class="navbar-brand" href="#">
-        <img src="assets/images/angular.png" width="40" height="40" alt="logo NG-Blog"/>
-      NG-BLOG
+  <nav class="navbar navbar-expand-lg mt-3">
+    <a class="navbar-brand brang-cursive" [routerLink]="[ '/home' ]">
+        <img src="assets/images/travel.svg" width="40" height="40" alt="logo NG-Blog"/>
+      Travel Blog
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+    <button class="navbar-toggler border" type="button" data-toggle="collapse" 
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
             aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+            &#x2631;
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="[ '/home' ]">Inicio <span class="sr-only">(current)</span></a>
-        </li>
+      <ul class="navbar-nav mr-auto" >
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,10 +28,18 @@
 
       <ul class="navbar-nav navbar-right" *ngIf="!identity">
           <li class="nav-item active" routerLinkActive="active">
-              <a class="nav-link" [routerLink]="[ '/login' ]">Login</a>
+              <a class="nav-link" [routerLink]="[ '/login' ]">
+                <span class="material-icons">
+                  arrow_circle_up
+                  </span>
+                Login</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-              <a class="nav-link"[routerLink]="[ '/registro' ]">Registro</a>
+              <a class="nav-link"[routerLink]="[ '/registro' ]">
+                <span class="material-icons">
+                  assignment_ind
+                  </span>
+                Registro</a>
             </li>
       </ul>
 
@@ -51,12 +56,32 @@
             {{ identity.name  + ' '+ identity.surname}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/crear-post']">Crear post</a>
-            <a class="dropdown-item" [routerLink]="['/crear-categoria']">Crear categoria</a>
+            <a class="dropdown-item" [routerLink]="['/crear-post']">
+              <span class="material-icons">
+                note_add
+                </span>
+              Crear post</a>
+            <a class="dropdown-item" [routerLink]="['/crear-categoria']">
+              <span class="material-icons">
+                library_books
+                </span>
+              Crear categoria</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['/perfil', identity.sub]">Mi perfil</a>
-            <a class="dropdown-item" [routerLink]="[ '/ajustes']">Ajustes</a>
-            <a class="dropdown-item" [routerLink]="[ '/logout/1']">Salir</a>
+            <a class="dropdown-item" [routerLink]="['/perfil', identity.sub]">
+              <span class="material-icons">
+                article
+                </span>
+              Mis Posts</a>
+            <a class="dropdown-item" [routerLink]="[ '/ajustes']">
+              <span class="material-icons">
+                miscellaneous_services
+                </span>
+              Ajustes</a>
+            <a class="dropdown-item" [routerLink]="[ '/logout/1']">
+              <span class="material-icons">
+                near_me_disabled
+                </span>
+              Salir</a>
           </div>
         </li>
       </ul>

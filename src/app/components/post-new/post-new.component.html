@@ -1,8 +1,8 @@
-<div class="col-md-12 m-3">
+<div class="col-md-12 m-3 cards-post">
 
     <h1>{{ page_title }}</h1>
     <p *ngIf="status == ''">
-        Seccion para Crear POST con un <b>USUARIO</b>!!!
+ 
     </p>
     <hr/>
     <div class="alert alert-success col-md-6" *ngIf="status == 'success'">
@@ -16,40 +16,45 @@
   
     <!-- Formulario de Ajustes -->
   
-    <form  class="card p-3 col-md-6 " #postnewForm="ngForm" 
+    <form  class="card p-3 col-md-12 " #postnewForm="ngForm" 
       (ngSubmit)="newpost(postnewForm)">
-      <div class="form-group">
-        <label for="name">Titulo</label>
-        <input type="text" class="form-control" name="title" #title="ngModel"
-        [(ngModel)]="post.title" required />
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="name">Titulo</label>
+            <input type="text" class="form-control" name="title" #title="ngModel"
+            [(ngModel)]="post.title" required />
+      
+            <small *ngIf="title.invalid && title.touched" class="invalid-feedback d-block">
+              El titulo no es Valido
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="category_id">Selecciones Categorias</label>
+            <select class="form-control" id="category_id" required
+            name="category_id" #category="ngModel" [(ngModel)]="post.category_id">
+              <option *ngFor="let category of categories" [value]="category.id">
+                {{  category.name }}
+              </option>
+            </select>
   
-        <small *ngIf="title.invalid && title.touched" class="invalid-feedback d-block">
-          El titulo no es Valido
-        </small>
-      </div>
-
-      <div class="form-group">
-        <label for="content">Contenido</label>
-        <textarea [(froalaModel)]="post.content"
-        [(ngModel)]="post.content"
-        [froalaEditor]="opcionesfroala" type="text" 
-        name="content" #content="ngModel" required></textarea>
-        
-        <small *ngIf="content.invalid && content.touched" class="invalid-feedback d-block">
-            El contenido es obligatorio
-        </small>
-      </div>
-
-      <div class="form-group">
-          <label for="category_id">Selecciones Categorias</label>
-          <select class="form-control" id="category_id" required
-          name="category_id" #category="ngModel" [(ngModel)]="post.category_id">
-            <option *ngFor="let category of categories" [value]="category.id">
-              {{  category.name }}
-            </option>
-          </select>
-
+          </div>
         </div>
+
+        <div class="col-8">
+          <div class="form-group">
+            <label for="content">Contenido</label>
+            <textarea [(froalaModel)]="post.content"
+            [(ngModel)]="post.content"
+            [froalaEditor]="opcionesfroala" type="text" 
+            name="content" #content="ngModel" required></textarea>
+            
+            <small *ngIf="content.invalid && content.touched" class="invalid-feedback d-block">
+                El contenido es obligatorio
+            </small>
+          </div>
+        </div>
+      </div>    
 
         <div class="form-group">
           <label for="image">Imagen Post</label>
@@ -62,7 +67,9 @@
             [resetUpload]=resetVar
             (ApiResponse)="ImagenUpload($event)">
           </angular-file-uploader>
-    
+          <small *ngIf="error_img" class="invalid-feedback d-block">
+            La Imagen del post es obligatoria
+        </small>
         </div>
   
       <input type="submit" value="Crear Post" class="btn btn-success" 

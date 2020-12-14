@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
+import { urlglobal } from '../../services/apiglobal';
 
 @Component({
   selector: 'app-post-detail',
@@ -13,6 +14,7 @@ import { PostService } from '../../services/post.service';
 export class PostDetailComponent implements OnInit {
 
   post:Post;
+  url;
   
   constructor(private _userService: UserService,
               private _http: HttpClient,
@@ -20,7 +22,7 @@ export class PostDetailComponent implements OnInit {
               private _route: Router,
               private _activeRoute: ActivatedRoute)
   {
-
+    this.url = urlglobal.url;
   }
 
   ngOnInit() 

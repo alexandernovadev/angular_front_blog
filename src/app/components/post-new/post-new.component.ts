@@ -21,6 +21,7 @@ export class PostNewComponent implements OnInit {
   public categories;
   urlapi = urlglobal.url;
   resetVar=''
+  public error_img: boolean
   
   opcionesfroala: Object = {
     language: 'es',
@@ -68,14 +69,15 @@ export class PostNewComponent implements OnInit {
     this.status = '';
     this.token = _userService.getToken();
     this.identity = _userService.getIdentity();
+    this.error_img = false
 
     this.post = new Post(
       1,
       this.identity.sub,
       1,
+      'Colombia has a vibrant collage of talent that touches a full spectrum of rhythms. Musicians, composers, music producers and singers from Colombia are recognized internationally such as Shakira, Juanes, Carlos Vives and others.[343] Colombian music blends European-influenced guitar and song structure with large gaita flutes and percussion instruments from the indigenous population, while its percussion structure and dance forms come from Africa. Colombia has a diverse and dynamic musical environment',
       '',
-      '',
-      '',
+      'Colmbia',
       ''
     );
 
@@ -101,6 +103,7 @@ export class PostNewComponent implements OnInit {
 
   newpost(form)
   { 
+    this.error_img = false
     // console.log(this.post);
     this._postService.create(this.token, this.post).subscribe(
       response => 
@@ -113,11 +116,11 @@ export class PostNewComponent implements OnInit {
 
           }, 1500);
         }
-        console.log(response);
+        console.log(response.status);
       },
       error => 
       {
-        console.log(error);
+    
       }
     );
     

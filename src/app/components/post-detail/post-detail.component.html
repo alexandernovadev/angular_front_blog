@@ -1,18 +1,21 @@
-<div class="col-md-12" *ngIf="post; else loading">
-  <h1>{{ post.title }}</h1>
+<div class="col-md-12 cards-post" *ngIf="post; else loading">
+
+  <button routerLink="/home"  class="btn btn-danger m-2"><span>&#8592;</span> Atras</button>
+  <div class="row mt-2">
+    <div class="col-6">
+      <img [src]="url +'post/image/' + post.image" [alt]="post.title" class="img-detail"/>
+    </div>
+    <div class="col-6">
+
+      <h1 class="text-danger"><b>{{ post.title }}</b></h1>
+      <p style="font-size: 20px;" [innerHTML]="post.content"></p>
+    </div>
+  </div>
   <hr>
   
-  <p>
-    {{ post.category.name }} - <a [routerLink]="[ '/perfil', post.user.id ]">
-      {{ post.user.name + " " + post.user.surname }}
-    </a>
-  </p>
-  <hr>
-<!-- 
-  Pintar HTML sin etiquetas
-  Hay que utilizar una propiedad de Angular llamada [innerHTML]="aqui la variable" -->
 
-  <p [innerHTML]="post.content"></p>
+
+ 
 </div>
 
 <ng-template #loading>

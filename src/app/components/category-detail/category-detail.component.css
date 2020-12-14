@@ -1,0 +1,42 @@
+.cards-post{
+    color: black;
+    font-family: 'Indie Flower', cursive;
+}
+.img__cargando{
+    width: 20%;
+    margin-right: 20px;
+}
+.cards-post{
+    color: black;
+    font-family: 'Indie Flower', cursive;
+}
+.card__custom{
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    float: left;
+    margin: 6px;
+    cursor: pointer;
+}
+.card__custom-title {
+    color: black !important;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.card__custom:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card__custom img {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    width: 100%;
+    height: 200px;
+}
+.card__custom p {
+    display: block;
+    width: 1000px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

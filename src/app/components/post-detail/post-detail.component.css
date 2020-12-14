@@ -1,0 +1,11 @@
+.cards-post{
+    color: black;
+    font-family: 'Indie Flower', cursive;
+}
+.img-detail{
+    padding: 10px;
+    border-radius: 20px;
+    width: 80%;
+    height: 400px;
+    border-style: dotted;
+}
